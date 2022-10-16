@@ -1,5 +1,3 @@
-from re import M
-from statistics import mode
 from flask import Flask, make_response, jsonify, request
 from bd import carros
 
