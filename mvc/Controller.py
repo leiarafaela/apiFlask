@@ -1,7 +1,9 @@
 from flask import Flask, make_response, jsonify, request
+from flask_cors import CORS
 from Model import Model as model
 
 app = Flask(__name__)
+CORS(app)
 app.config['JSON_SORT_KEYS'] = False
 
 @app.route('/')
@@ -11,13 +13,13 @@ def root():
 @app.route('/usuarios', methods=['GET'])
 def get_users():
     return make_response(jsonify(
-        mensagem="Lista de Usuarios",
-        usuarios=model.getAll())) 
+        model.getAll()))
+        
 
 @app.route('/usuarios/<int:user_id>', methods=['GET'])
 def get_user(user_id):
     return make_response(jsonify(
-        usuario=model.getById(user_id)))
+        model.getById(user_id)))
 
 @app.route('/usuarios', methods=['POST'])
 def create_user():
