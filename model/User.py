@@ -1,6 +1,6 @@
 from bd import users
 
-class Model():
+class User():
     def getAll():
         return users
 
